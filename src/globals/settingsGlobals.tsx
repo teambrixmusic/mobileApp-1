@@ -1,3 +1,5 @@
+import { CloutFeedTheme } from '@screens/appearance.screen';
+
 export const settingsGlobals = {
-    darkMode: false
+    theme: CloutFeedTheme.Light,
 };

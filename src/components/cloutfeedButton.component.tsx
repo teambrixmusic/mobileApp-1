@@ -1,4 +1,5 @@
 import { settingsGlobals } from '@globals/settingsGlobals';
+import { isDarkMode } from '@styles/';
 import { themeStyles } from '@styles/globalColors';
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity, StyleProp, ViewStyle } from 'react-native';
@@ -38,7 +39,7 @@ export default class CloutFeedButton extends React.Component<Props> {
                     styles.btnContainer,
                     this.props.styles,
                     { backgroundColor: this.props.disabled ? themeStyles.buttonDisabledColor.backgroundColor : 'black' },
-                    { borderWidth: settingsGlobals.darkMode ? 1 : 0 },
+                    { borderWidth: isDarkMode(settingsGlobals.theme) ? 1 : 0 },
                     themeStyles.buttonBorderColor
                 ]}>
                 <Text style={styles.btnTitle}>{this.props.title}</Text>

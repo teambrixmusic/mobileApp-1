@@ -11,7 +11,8 @@ import { ChangeFollowersEvent, EventType } from '@types';
 
 export enum CloutFeedTheme {
     Light = 'light',
-    Dark = 'dark'
+    Dark = 'dark',
+    Cake = 'cake',
 }
 
 export function AppearanceScreen({ navigation }: any) {
@@ -43,7 +44,7 @@ export function AppearanceScreen({ navigation }: any) {
         }
 
         const key = globals.user.publicKey + constants.localStorage_appearance;
-        settingsGlobals.darkMode = p_theme === 'dark';
+        settingsGlobals.theme = p_theme;
 
         try {
             await SecureStore.setItemAsync(key, p_theme);
@@ -108,6 +109,10 @@ export function AppearanceScreen({ navigation }: any) {
                         {
                             name: 'Dark',
                             value: CloutFeedTheme.Dark
+                        },
+                        {
+                            name: 'Cake',
+                            value: CloutFeedTheme.Cake
                         },
                     ]}
                     value={selectedTheme}

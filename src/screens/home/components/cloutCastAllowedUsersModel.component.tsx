@@ -11,6 +11,7 @@ import { settingsGlobals } from '@globals/settingsGlobals';
 import { Profile } from '@types';
 import { ParamListBase } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { isDarkMode } from '@styles';
 
 interface Props {
     navigation: StackNavigationProp<ParamListBase>;
@@ -112,7 +113,7 @@ export class CloutCastAllowedUsersModelComponent extends React.Component<Props, 
                             }
                         </View>
 
-                        <View style={[styles.profileCoinPriceContainer, { backgroundColor: settingsGlobals.darkMode ? '#171717' : '#ebebeb' }]}>
+                        <View style={[styles.profileCoinPriceContainer, { backgroundColor: isDarkMode(settingsGlobals.theme) ? '#171717' : '#ebebeb' }]}>
                             <Text
                                 style={[styles.profileCoinPriceText, themeStyles.fontColorMain]}
                             >~${calculateAndFormatBitCloutInUsd(item.CoinPriceBitCloutNanos)}

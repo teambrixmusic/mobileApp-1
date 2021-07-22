@@ -6,6 +6,7 @@ import { Message } from '@types';
 import { TextWithLinks } from './textWithLinks.component';
 import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { isDarkMode } from '@styles';
 
 export function MessageComponent(
     { message }: { message: Message }
@@ -35,7 +36,7 @@ export function MessageComponent(
     );
     return <View style={[
         styles.messageContainer,
-        { backgroundColor: settingsGlobals.darkMode ? '#333333' : '#4d4d4d' },
+        { backgroundColor: isDarkMode(settingsGlobals.theme) ? '#333333' : '#4d4d4d' },
         message.IsSender ? styles.sentMessage : styles.receivedMessage,
         message.LastOfGroup ? styles.lastOfGroup : {}
     ]}

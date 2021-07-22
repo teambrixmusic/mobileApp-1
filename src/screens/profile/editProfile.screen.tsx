@@ -12,6 +12,7 @@ import { signing } from '@services/authorization/signing';
 import CloutFeedLoader from '@components/loader/cloutFeedLoader.component';
 import CloutFeedButton from '@components/cloutfeedButton.component';
 import { ParamListBase } from '@react-navigation/native';
+import { isDarkMode } from '@styles';
 
 interface Props {
     navigation: NavigationProp<ParamListBase>
@@ -226,7 +227,7 @@ export class EditProfileScreen extends Component<Props, State> {
                             onChangeText={(p_text: string) => {
                                 this.setState({ username: p_text });
                             }}
-                            keyboardAppearance={settingsGlobals.darkMode ? 'dark' : 'light'}
+                            keyboardAppearance={isDarkMode(settingsGlobals.theme) ? 'dark' : 'light'}
                         />
                     </View>
                     <View style={[styles.inputContainer]}>
@@ -237,7 +238,7 @@ export class EditProfileScreen extends Component<Props, State> {
                             multiline={true}
                             maxLength={180}
                             onChangeText={this.handleDescriptionChange}
-                            keyboardAppearance={settingsGlobals.darkMode ? 'dark' : 'light'}
+                            keyboardAppearance={isDarkMode(settingsGlobals.theme) ? 'dark' : 'light'}
                         />
                     </View>
                     <View style={[styles.inputContainer]}>
@@ -247,7 +248,7 @@ export class EditProfileScreen extends Component<Props, State> {
                             keyboardType='numeric'
                             value={this.state.founderReward}
                             onChangeText={this.handleFounderRewardsChange}
-                            keyboardAppearance={settingsGlobals.darkMode ? 'dark' : 'light'}
+                            keyboardAppearance={isDarkMode(settingsGlobals.theme) ? 'dark' : 'light'}
                         />
                     </View>
                 </View>

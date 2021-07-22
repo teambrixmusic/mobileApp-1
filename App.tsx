@@ -27,6 +27,8 @@ import CloutFeedLoader from '@components/loader/cloutFeedLoader.component';
 import { stackConfig } from './src/navigation/stackNavigationConfig';
 import CloutFeedIntroduction from '@screens/introduction/cloutFeedIntroduction.screen';
 import TermsConditionsScreen from '@screens/login/termsAndConditions.screen';
+import { CloutFeedTheme } from '@screens/appearance.screen';
+import { isDarkMode } from './styles';
 enableScreens();
 
 const Stack = createStackNavigator();
@@ -212,12 +214,12 @@ export default function App(): JSX.Element {
   }
 
   async function setTheme(p_force = false) {
-    settingsGlobals.darkMode = false;
+    settingsGlobals.theme = CloutFeedTheme.Light;
 
     const key = globals.user.publicKey + constants.localStorage_appearance;
     if (globals.followerFeatures || p_force) {
       const theme = await SecureStore.getItemAsync(key);
-      settingsGlobals.darkMode = theme === 'dark';
+      settingsGlobals.theme = theme;
     } else {
       await SecureStore.setItemAsync(key, 'light');
     }
@@ -229,7 +231,7 @@ export default function App(): JSX.Element {
     <CloutFeedLoader />
     :
     <NavigationContainer>
-      <StatusBar style={settingsGlobals.darkMode ? 'light' : 'dark'} hidden={false} />
+      <StatusBar style={isDarkMode(settingsGlobals.theme) ? 'light' : 'dark'} hidden={false} />
       <Stack.Navigator
         screenOptions={stackConfig}>
         {

@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { eventManager, globals, hapticsManager, navigatorGlobals, settingsGlobals } from '@globals';
-import { themeStyles } from '@styles';
+import { isDarkMode, themeStyles } from '@styles';
 import { cache } from '@services/dataCaching';
 import { EventType } from '@types';
 import HomeStackScreen from './homeSatckNavigator';
@@ -133,7 +133,7 @@ const TabBar = ({ state, navigation }: any) => {
         return null;
     }
     return (
-        <View style={[styles.tabsContainer, themeStyles.containerColorMain, { borderColor: settingsGlobals.darkMode ? '#141414' : '#f2f2f2' }]}>
+        <View style={[styles.tabsContainer, themeStyles.containerColorMain, { borderColor: isDarkMode(settingsGlobals.theme) ? '#141414' : '#f2f2f2' }]}>
             {
                 routes.slice(0, 2).map((p_route: any) => (
                     <TabElement

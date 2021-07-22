@@ -9,7 +9,7 @@ import { ProfileScreen } from '@screens/profile/profile.screen';
 import { ProfileFollowersScreen } from '@screens/profileFollowers.screen';
 import { SettingsScreen } from '@screens/settings/settings.screen';
 import { globals, settingsGlobals } from '@globals';
-import { themeStyles } from '@styles';
+import { isDarkMode, themeStyles } from '@styles';
 import { CreatorCoinScreen } from '@screens/creatorCoin/creatorCoin.screen';
 import EditProfileScreen from '@screens/profile/editProfile.screen';
 import { PostScreen } from '@screens/post.screen';
@@ -50,7 +50,7 @@ export default function ProfileStackScreen() {
                         headerLeft: () =>
                             <View style={styles.headerContainer}>
                                 {
-                                    settingsGlobals.darkMode ?
+                                    isDarkMode(settingsGlobals.theme) ?
                                         <Image
                                             style={styles.logo}
                                             source={require('../../assets/icon-black.png')}
@@ -58,7 +58,7 @@ export default function ProfileStackScreen() {
                                         :
                                         <Image
                                             style={styles.logo}
-                                            source={require('../../assets/icon-white.png')}
+                                            source={require('../../assets/icon-white-transparent.png')}
                                         ></Image>
                                 }
                                 <Text style={{ marginLeft: -10, fontWeight: '700', fontSize: 20, color: themeStyles.fontColorMain.color }}>CloutFeed</Text>

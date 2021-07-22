@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { CreatorCoinHODLer, Profile } from '@types';
 import { globals, navigatorGlobals, settingsGlobals } from '@globals';
 import { api, cache, promiseHelper, setLocalMessage } from '@services';
-import { themeStyles } from '@styles';
+import { isDarkMode, themeStyles } from '@styles';
 import { signing } from '@services/authorization/signing';
 
 export function MessageTopHoldersInputScreen({ route, navigation }: any) {
@@ -159,7 +159,7 @@ export function MessageTopHoldersInputScreen({ route, navigation }: any) {
                             value={messageText}
                             autoFocus
                             onChangeText={setMessageText}
-                            keyboardAppearance={settingsGlobals.darkMode ? 'dark' : 'light'}
+                            keyboardAppearance={isDarkMode(settingsGlobals.theme) ? 'dark' : 'light'}
                         ></TextInput>
 
                     </TouchableWithoutFeedback>

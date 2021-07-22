@@ -4,6 +4,7 @@ import { FontAwesome, MaterialCommunityIcons, Ionicons } from '@expo/vector-icon
 import { FlatList } from 'react-native-gesture-handler';
 import { themeStyles } from '@styles/globalColors';
 import { settingsGlobals } from '@globals/settingsGlobals';
+import { isDarkMode } from '@styles';
 
 declare type filterId = 'follow' | 'like' | 'reply' | 'mention' | 'reclout' | 'purchase' | 'diamond' | 'creatorCoinTransfer';
 interface FilterChip {
@@ -103,7 +104,7 @@ export class NotificationsFilterComponent extends React.Component<Props, State>{
     }
 
     render() {
-        const getIConColor = (p_filterId: filterId): string => this.state.filter[p_filterId] ? 'white' : settingsGlobals.darkMode ? themeStyles.fontColorSub.color : 'white';
+        const getIConColor = (p_filterId: filterId): string => this.state.filter[p_filterId] ? 'white' : isDarkMode(settingsGlobals.theme) ? themeStyles.fontColorSub.color : 'white';
 
         const renderChipIcon = (p_chipId: filterId) => {
             switch (p_chipId) {

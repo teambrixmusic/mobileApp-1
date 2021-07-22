@@ -6,7 +6,7 @@ import { ContactWithMessages, Message } from '@types';
 import { MessageComponent } from '@components/messageComponent';
 import { globals, settingsGlobals } from '@globals';
 import { api } from '@services';
-import { themeStyles } from '@styles';
+import { isDarkMode, themeStyles } from '@styles';
 import { signing } from '@services/authorization/signing';
 import CloutFeedLoader from '@components/loader/cloutFeedLoader.component';
 
@@ -272,7 +272,7 @@ export function ChatScreen({ route }: any) {
                         maxLength={1000}
                         placeholder={'Type a message'}
                         placeholderTextColor={'rgba(241,241,242,0.43)'}
-                        keyboardAppearance={settingsGlobals.darkMode ? 'dark' : 'light'}
+                        keyboardAppearance={isDarkMode(settingsGlobals.theme) ? 'dark' : 'light'}
                     >
                     </TextInput>
 
@@ -309,7 +309,7 @@ const styles = StyleSheet.create(
             alignItems: 'flex-end',
             paddingBottom: 36,
             paddingTop: 8,
-            backgroundColor: settingsGlobals.darkMode ?
+            backgroundColor: isDarkMode(settingsGlobals.theme) ?
                 themeStyles.containerColorMain.backgroundColor : '#1e2428'
         },
         textInput: {
@@ -321,7 +321,7 @@ const styles = StyleSheet.create(
             color: 'white',
             flex: 1,
             fontSize: 16,
-            backgroundColor: settingsGlobals.darkMode ?
+            backgroundColor: isDarkMode(settingsGlobals.theme) ?
                 themeStyles.containerColorSub.backgroundColor : '#33383b'
         },
         sendButton: {

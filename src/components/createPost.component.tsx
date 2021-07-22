@@ -6,7 +6,7 @@ import { Fontisto, Feather, Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { ImageGalleryComponent } from './imageGallery.component';
-import { themeStyles } from '@styles';
+import { isDarkMode, themeStyles } from '@styles';
 import { settingsGlobals } from '../globals/settingsGlobals';
 import { EventType, Post, Profile } from '@types';
 import { PostComponent } from './post/post.component';
@@ -185,7 +185,7 @@ export function CreatePostComponent(
                 setInternalPostText(p_value);
                 inputRef?.focus();
             }}
-            keyboardAppearance={settingsGlobals.darkMode ? 'dark' : 'light'}
+            keyboardAppearance={isDarkMode(settingsGlobals.theme) ? 'dark' : 'light'}
             partTypes={[
                 {
                     trigger: '@',

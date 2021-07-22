@@ -8,7 +8,7 @@ import { TextWithLinks } from '@components/textWithLinks.component';
 import { api, cache, formatNumber } from '@services';
 import { eventManager, globals, settingsGlobals } from '@globals';
 import { ChangeFollowersEvent, EventType, Profile, User } from '@types';
-import { themeStyles } from '@styles';
+import { isDarkMode, themeStyles } from '@styles';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 interface Props {
@@ -216,7 +216,7 @@ export class ProfileCard extends React.Component<Props, State> {
                         </TouchableOpacity>
                     </View>
 
-                    <View style={[styles.infoBorder, { backgroundColor: settingsGlobals.darkMode ? '#3b3b3b' : '#e0e0e0' }]}></View>
+                    <View style={[styles.infoBorder, { backgroundColor: isDarkMode(settingsGlobals.theme) ? '#3b3b3b' : '#e0e0e0' }]}></View>
 
                     <View style={styles.infoTextContainer}>
                         <TouchableOpacity
@@ -233,7 +233,7 @@ export class ProfileCard extends React.Component<Props, State> {
                         </TouchableOpacity>
                     </View>
 
-                    <View style={[styles.infoBorder, { backgroundColor: settingsGlobals.darkMode ? '#3b3b3b' : '#e0e0e0' }]}></View>
+                    <View style={[styles.infoBorder, { backgroundColor: isDarkMode(settingsGlobals.theme) ? '#3b3b3b' : '#e0e0e0' }]}></View>
 
                     <View style={styles.infoTextContainer}>
                         <TouchableOpacity

@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { themeStyles } from '@styles';
+import { isDarkMode, themeStyles } from '@styles';
 import { navigatorGlobals, settingsGlobals } from '@globals';
 
 export function SearchHeaderComponent({ route }: any) {
@@ -22,7 +22,7 @@ export function SearchHeaderComponent({ route }: any) {
                 maxLength={50}
                 placeholder={'Search'}
                 placeholderTextColor={themeStyles.fontColorSub.color}
-                keyboardAppearance={settingsGlobals.darkMode ? 'dark' : 'light'}
+                keyboardAppearance={isDarkMode(settingsGlobals.theme) ? 'dark' : 'light'}
             />
         </View>
     </View>;

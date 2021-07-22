@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Platform } from 'react-native';
 import { ActionSheetConfig } from '@services';
-import { themeStyles } from '@styles';
+import { isDarkMode, themeStyles } from '@styles';
 import Modal from 'react-native-modal';
 import { eventManager } from '@globals/injector';
 import { EventType } from '@types';
@@ -42,7 +42,7 @@ export function ActionSheet(props: { config: ActionSheetConfig }): JSX.Element {
         <View style={[styles.optionsContainer, themeStyles.modalBackgroundColor]}>
             {
                 props.config.headerDescription &&
-                <View style={{ borderBottomWidth: 1, borderColor: settingsGlobals.darkMode ? '#2b2b2b' : '#e0e0e0' }}>
+                <View style={{ borderBottomWidth: 1, borderColor: isDarkMode(settingsGlobals.theme) ? '#2b2b2b' : '#e0e0e0' }}>
                     <Text style={[
                         styles.headerDescription,
                         themeStyles.fontColorSub]}
@@ -55,7 +55,7 @@ export function ActionSheet(props: { config: ActionSheetConfig }): JSX.Element {
                         <TouchableOpacity
                             style={[
                                 styles.optionButton,
-                                p_index !== props.config.options.length - 2 && { borderBottomWidth: 1, borderColor: settingsGlobals.darkMode ? '#2b2b2b' : '#e0e0e0' },
+                                p_index !== props.config.options.length - 2 && { borderBottomWidth: 1, borderColor: isDarkMode(settingsGlobals.theme) ? '#2b2b2b' : '#e0e0e0' },
                             ]}
                             key={p_index.toString()}
                             onPress={() => onOptionClick(p_index)}
